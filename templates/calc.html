@@ -117,8 +117,8 @@
     var km = control.find("input[name='km']").val();
     var open_time_field = control.find("input[name='open']");
     var close_time_field = control.find("input[name='close']");
-    var begin_date = begin_date.val();
-    var begin_time = begin_time.val();
+    var begin_date = $("#begin_date").val();
+    var begin_time = $("#begin_time").val();
     
     $.getJSON(TIME_CALC_URL, { km: km, open_date: begin_date, open_time: begin_time }, 
       // response handler
