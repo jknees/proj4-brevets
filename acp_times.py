@@ -29,7 +29,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
-    return arrow.now().isoformat()
+    return brevet_start_time
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -44,6 +44,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control close time.
        This will be in the same time zone as the brevet start time.
     """
-    return arrow.now().isoformat()
+    return brevet_start_time
+
 
 

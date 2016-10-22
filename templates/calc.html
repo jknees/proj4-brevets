@@ -41,15 +41,6 @@
   -- result in regenerating the page, not on every xmlhttp request.) 
   -->
 
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
 
 <!-- Design on bootstrap grid -->
 <form role="form">
@@ -80,12 +71,12 @@
   <div class="col-md-12"> 
   <table class="control_time_table">
       <tr>
-	<th> Miles </th>
-	<th> Km </th>
-	<th>Location</th>
-	<th>Open</th>
-	<th>Close</th>
-	<th>Notes</th>
+  <th> Miles </th>
+  <th> Km </th>
+  <th>Location</th>
+  <th>Open</th>
+  <th>Close</th>
+  <th>Notes</th>
       </tr>
    {% for row in range(20) %}
     <tr class="control">
@@ -94,11 +85,11 @@
            min="0" max="900" size="5" /></td>
       <!-- Dist (km) -->
       <td><input name="km" type="text"
-	   min="0" max="1100" size="5" /> </td>
+     min="0" max="1100" size="5" /> </td>
       <!-- Location (optional) -->
       <td><input name="location" type="text" 
         placeholder="Optional location name"
-	size="20" /> </td>
+  size="20" /> </td>
       <!-- Open time (read only, set by JavaScript function -->
       <td><input name="open" type="datetime" value="" readonly /></td>
       <!-- Close time (read only, set by JavaScript function -->
@@ -126,8 +117,10 @@
     var km = control.find("input[name='km']").val();
     var open_time_field = control.find("input[name='open']");
     var close_time_field = control.find("input[name='close']");
+    var begin_date = begin_date.val();
+    var begin_time = begin_time.val();
     
-    $.getJSON(TIME_CALC_URL, { km: km }, 
+    $.getJSON(TIME_CALC_URL, { km: km, open_date: begin_date, open_time: begin_time }, 
       // response handler
       function(data) {
          var times = data.result;
