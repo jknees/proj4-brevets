@@ -66,7 +66,7 @@ def _calc_times():
   km = request.args.get('km', 0, type=int)
   open_date = request.args.get('open_date', '2017-01-01', type=str)
   open_date_time = request.args.get('open_time', "00:00", type=str)
-  open_date_formated = arrow.get(open_date + " " + open_date_time, 'YYYY-MM-DD HH:mm').replace(hours=-7).isoformat()
+  open_date_formated = arrow.get(open_date + " " + open_date_time, 'YYYY-MM-DD HH:mm').replace(hours=+8).isoformat()
   #FIXME: These probably aren't the right open and close times
   open_time = acp_times.open_time(km, 200, open_date_formated)
   close_time = acp_times.close_time(km, 200, open_date_formated)
