@@ -32,6 +32,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
+    print("control_dist_km= " + str(control_dist_km))
     control_start_time = 0
     for key in BREVET_ORDERED_KEYS:
       if key <= control_dist_km:
@@ -41,7 +42,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_start_time += control_dist_km/BREVET_TIMES[key][0]
         control_dist_km = 0
 
-
+    print("control_start_time= " + str(control_start_time))
     integer, floating = math.modf(control_start_time)
     print("hour= " + str(integer))
     return brevet_start_time.replace(hours=+integer)
