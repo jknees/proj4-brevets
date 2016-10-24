@@ -15,8 +15,8 @@ import math
 #  same arguments.  Arguments are explained in the
 #  javadoc comments. 
 #
-BREVET_TIMES = {200: [15, 34, 13.50], 400: [15, 32], 600: [15, 30], 1000: [11.428, 28], 1300: [13.333, 26]}
-BREVET_ORDERED_KEYS = [200, 400, 600, 1000, 1300]
+BREVET_TIMES = {200: [15, 34, 13.50], 300: [15, 32, 20], 400: [15, 32, 27], 600: [15, 30, 40], 1000: [11.428, 28, 75], 1300: [13.333, 26]}
+BREVET_ORDERED_KEYS = [200, 300, 400, 600, 1000, 1300]
 
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
@@ -62,8 +62,8 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
     control_close_time = 0
 
-    if brevet_dist_km == 200 and 200 <= control_dist_km and control_dist_km <= 220:
-      control_close_time += BREVET_TIMES[200][2]
+    if brevet_dist_km in BREVET_ORDERED_KEYS and brevet_dist_km*0.8 <= control_dist_km and control_dist_km <= brevet_dist_km*1.2:
+      control_close_time += BREVET_TIMES[brevet_dist_km][2]
       minute, hour = math.modf(control_close_time)
       return brevet_start_time.replace(hours=+hour, minutes=+(int(60*minute)))
 
