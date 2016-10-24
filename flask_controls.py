@@ -67,7 +67,7 @@ def _calc_times():
   print("km = " + str(km))
   open_date = request.args.get('open_date', '2017-01-01', type=str)
   open_date_time = request.args.get('open_time', "00:00", type=str)
-  brev_dist = request.args.get('brev_dist', 200, type=int)
+  brev_dist = request.args.get('dist', 200, type=int)
   open_date_formated = arrow.get(open_date + " " + open_date_time, 'YYYY-MM-DD HH:mm')
   #FIXME: These probably aren't the right open and close times
   open_time = acp_times.open_time(km, brev_dist, open_date_formated)
