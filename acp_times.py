@@ -75,7 +75,9 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_close_time += control_dist_km/BREVET_TIMES[key][0]
         control_dist_km = 0
 
+    print("control_close_time= " + str(control_close_time))
     minute, hour = math.modf(control_close_time)
+    print("hour= " + str(hour) + " minute= " + str(minute))
     return brevet_start_time.replace(hour=+hour, minute=+(round(60*minute, 2)))
 
 
