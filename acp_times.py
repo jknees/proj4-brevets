@@ -5,6 +5,7 @@ following rules described at https://rusa.org/octime_alg.html
 and https://rusa.org/pages/rulesForRiders
 """
 import arrow
+import math
 
 #  Note for CIS 322 Fall 2016:
 #  You MUST provide the following two functions
@@ -41,7 +42,8 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_dist_km = 0
 
 
-    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm")
+    integer, floating = math.mod(control_start_time)
+    return brevet_start_time.replace(  hour=+integer, minute=+floating )
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -56,21 +58,22 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control close time.
        This will be in the same time zone as the brevet start time.
     """
-    control_start_time = 0
+    control_close_time = 0
 
     if brevet_dist_km == 200 and 200 <= control_dist_km and control_dist_km <= 220:
-      control_start_time += BREVET_TIMES[200][2]
-      return arrow.get(control_start_time, "YYYY-MM-DD HH:mm")
+      control_close_time += BREVET_TIMES[200][2]
+      return arrow.get(control_close_time, "YYYY-MM-DD HH:mm")
 
     for key in BREVET_ORDERED_KEYS:
       if key <= control_dist_km:
         control_dist_km -= key
-        control_start_time += key/BREVET_TIMES[key][1]
+        control_close_time += key/BREVET_TIMES[key][1]
       elif control_dist_km > 0:
-        control_start_time += control_dist_km/BREVET_TIMES[key][1]
+        control_close_time += control_dist_km/BREVET_TIMES[key][1]
         control_dist_km = 0
 
-    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm")
+    integer, floating = math.mod(control_close_time)
+    return brevet_start_time.replace(  hour=+integer, minute=+floating )
 
 
 
