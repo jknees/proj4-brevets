@@ -78,7 +78,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     print("control_close_time= " + str(control_close_time))
     minute, hour = math.modf(control_close_time)
     print("hour= " + str(hour) + " minute= " + str(int(60*minute)))
-    return brevet_start_time.replace(hour=+int(hour)).replace(minute=+(int(60*minute)))
+    return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(60*minute)))
 
 
 
