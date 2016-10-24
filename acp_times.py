@@ -43,9 +43,9 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_dist_km = 0
 
     print("control_start_time= " + str(control_start_time))
-    integer, floating = math.modf(control_start_time)
-    print("hour= " + str(floating))
-    return brevet_start_time.replace(hours=+floating)
+    minute, hour = math.modf(control_start_time)
+    print("hour= " + str(hour))
+    return brevet_start_time.replace(hours=+hour, minutes=+(round(60*minute, 2)*100))
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
