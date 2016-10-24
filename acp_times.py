@@ -61,6 +61,8 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        This will be in the same time zone as the brevet start time.
     """
     control_close_time = 0
+    print("brevet_dist_km= " + str(brevet_dist_km))
+    print("Before control_dist_km= " + str(control_dist_km))
 
     if brevet_dist_km*0.8 <= control_dist_km and control_dist_km <= brevet_dist_km*1.2:
       print("Passed condition")
