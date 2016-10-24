@@ -64,7 +64,8 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 
     if brevet_dist_km == 200 and 200 <= control_dist_km and control_dist_km <= 220:
       control_close_time += BREVET_TIMES[200][2]
-      return arrow.get(control_close_time, "YYYY-MM-DD HH:mm")
+      minute, hour = math.modf(control_start_time)
+      return brevet_start_time.replace(hours=+hour, minutes=+round(60*minute, 2))
 
     for key in BREVET_ORDERED_KEYS:
       if key <= control_dist_km:
