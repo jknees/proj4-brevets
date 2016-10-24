@@ -115,6 +115,7 @@
   // stash them in hidden fields.) 
   function calc_times(control) {
     var km = control.find("input[name='km']").val();
+    console.log("km = " + km)
     var open_time_field = control.find("input[name='open']");
     var close_time_field = control.find("input[name='close']");
     var begin_date = $("#begin_date").val();
