@@ -15,7 +15,7 @@ import arrow
 #  javadoc comments. 
 #
 BREVET_TIMES = {200: [15, 34, 13.50], 400: [15, 32], 600: [15, 30], 1000: [11.428, 28], 1300: [13.333, 26]}
-BREVET_ORDERED_KEYS = BREVET_TIMES.keys().sort()
+BREVET_ORDERED_KEYS = [200, 400, 600, 1000, 1300]
 
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
