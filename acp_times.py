@@ -14,6 +14,8 @@ import arrow
 #  same arguments.  Arguments are explained in the
 #  javadoc comments. 
 #
+BREVET_TIMES = {200: [15, 34, 13.50], 400: [15, 32], 600: [15, 30], 1000: [11.428, 28], 1300: [13.333, 26]}
+BREVET_ORDERED_KEYS = BREVET_TIMES.keys().sort()
 
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
@@ -29,7 +31,17 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
-    return brevet_start_time
+    control_start_time = 0
+    for key in BREVET_ORDERED_KEYS:
+      if key <= control_dist_km:
+        control_dist_km -= key
+        control_start_time += key/BREVET_TIMES[key][0]
+      elif control_dist_km > 0:
+        control_start_time += control_dist_km/BREVET_TIMES[key][0]
+        control_dist_km = 0
+
+
+    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm", tzinfo=tz.tzlocal())
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -44,7 +56,21 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control close time.
        This will be in the same time zone as the brevet start time.
     """
-    return brevet_start_time
+    control_start_time = 0
+
+    if brevet_dist_km == 200 and 200 <= control_dist_km and control_dist_km <= 220:
+      control_start_time += BREVET_TIMES[200][2]
+      return arrow.get(control_start_time, "YYYY-MM-DD HH:mm", tzinfo=tz.tzlocal())
+
+    for key in BREVET_ORDERED_KEYS:
+      if key <= control_dist_km:
+        control_dist_km -= key
+        control_start_time += key/BREVET_TIMES[key][1]
+      elif control_dist_km > 0:
+        control_start_time += control_dist_km/BREVET_TIMES[key][1]
+        control_dist_km = 0
+
+    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm", tzinfo=tz.tzlocal())
 
 
 
