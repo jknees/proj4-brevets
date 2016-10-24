@@ -43,7 +43,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 
 
     integer, floating = math.modf(control_start_time)
-    return brevet_start_time.replace(hour=+integer, minute=+floating)
+    return brevet_start_time.replace(hours=+integer, minutes=+floating)
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
