@@ -41,7 +41,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_dist_km = 0
 
 
-    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm", tzinfo=tz.tzlocal())
+    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm")
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -60,7 +60,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
 
     if brevet_dist_km == 200 and 200 <= control_dist_km and control_dist_km <= 220:
       control_start_time += BREVET_TIMES[200][2]
-      return arrow.get(control_start_time, "YYYY-MM-DD HH:mm", tzinfo=tz.tzlocal())
+      return arrow.get(control_start_time, "YYYY-MM-DD HH:mm")
 
     for key in BREVET_ORDERED_KEYS:
       if key <= control_dist_km:
@@ -70,7 +70,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_start_time += control_dist_km/BREVET_TIMES[key][1]
         control_dist_km = 0
 
-    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm", tzinfo=tz.tzlocal())
+    return arrow.get(control_start_time, "YYYY-MM-DD HH:mm")
 
 
 
