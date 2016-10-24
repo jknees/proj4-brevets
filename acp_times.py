@@ -70,13 +70,13 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     for key in BREVET_ORDERED_KEYS:
       if key <= control_dist_km:
         control_dist_km -= key
-        control_close_time += key/BREVET_TIMES[key][1]
+        control_close_time += key/BREVET_TIMES[key][0]
       elif control_dist_km > 0:
-        control_close_time += control_dist_km/BREVET_TIMES[key][1]
+        control_close_time += control_dist_km/BREVET_TIMES[key][0]
         control_dist_km = 0
 
-    integer, floating = math.modf(control_close_time)
-    return brevet_start_time.replace(hour=+int(integer))
+    minute, hour = math.modf(control_close_time)
+    return brevet_start_time.replace(hour=+hour, minute=+(round(60*minute, 2))
 
 
 
