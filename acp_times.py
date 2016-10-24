@@ -45,7 +45,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     print("control_start_time= " + str(control_start_time))
     minute, hour = math.modf(control_start_time)
     print("hour= " + str(hour))
-    return brevet_start_time.replace(hours=+int(hour), minutes=+(int(60*minute)))
+    return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(60*minute)))
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
@@ -65,7 +65,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     if brevet_dist_km in BREVET_ORDERED_KEYS and brevet_dist_km*0.8 <= control_dist_km and control_dist_km <= brevet_dist_km*1.2:
       control_close_time += BREVET_TIMES[brevet_dist_km][2]
       minute, hour = math.modf(control_close_time)
-      return brevet_start_time.replace(hours=+hour, minutes=+(int(60*minute)))
+      return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(60*minute)))
 
     for key in BREVET_ORDERED_KEYS:
       if key <= control_dist_km:
@@ -78,7 +78,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     print("control_close_time= " + str(control_close_time))
     minute, hour = math.modf(control_close_time)
     print("hour= " + str(hour) + " minute= " + str(int(60*minute)))
-    return brevet_start_time.replace(hour=+int(hour), minute=+(int(60*minute)))
+    return brevet_start_time.replace(hour=+int(hour)).replace(minute=+(int(60*minute)))
 
 
 
