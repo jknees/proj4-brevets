@@ -68,7 +68,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
       print("Passed condition")
       control_close_time = BREVET_TIMES[brevet_dist_km][2]
       minute, hour = math.modf(control_close_time)
-      print("hours = " + str(hour) + " minute= " + minute)
+      print("hours = " + str(hour) + " minute= " + str(minute))
       return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(60*minute)))
 
     for key in BREVET_ORDERED_KEYS:
