@@ -122,6 +122,11 @@
     var begin_time = $("#begin_time").val();
     var brev_dist = $("#brevet_dist_km").val();
     
+    if (km > (1.2*brev_dist)) {
+      document.getElementById("brevet_dist_km").sytle.color = "red";
+    }
+
+
     $.getJSON(TIME_CALC_URL, { km: km, open_date: begin_date, open_time: begin_time, dist: brev_dist }, 
       // response handler
       function(data) {
