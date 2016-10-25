@@ -16,7 +16,7 @@ import math
 #  javadoc comments. 
 #
 BREVET_TIMES = {200: [15, 34, 13.50], 300: [15, 32, 20], 400: [15, 32, 27], 600: [15, 30, 40], 1000: [11.428, 28, 75], 1300: [13.333, 26]}
-BREVET_ORDERED_KEYS = [200, 300, 400, 600, 1000, 1300]
+BREVET_ORDERED_KEYS = [1000, 600, 400, 300, 200]
 
 
 def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
