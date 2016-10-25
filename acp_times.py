@@ -35,6 +35,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     print("control_dist_km= " + str(control_dist_km))
     control_start_time = 0
     for key in range(len(BREVET_ORDERED_KEYS)):
+      print(key)
       key = BREVET_ORDERED_KEYS[key+1]
       key -= BREVET_ORDERED_KEYS[key]
       if key <= control_dist_km:
