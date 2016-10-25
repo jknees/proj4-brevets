@@ -25,19 +25,37 @@ def test_edge_values():
 
 def test_general_times():
 	a = arrow.get('2017-01-01T00:00:00+00:00')
+	print(acp_times.open_time(50.5, 200, a))
 	assert acp_times.open_time(50.5, 200, a) == arrow.get('2017-01-01T01:30:00+00:00')
+	print(acp_times.close_time(50.5, 200, a))
 	assert acp_times.close_time(50.5, 200, a) == arrow.get('2017-01-01T03:24:00+00:00')
 
+	print()
+
+	print(acp_times.open_time(250.5, 300, a))
 	assert acp_times.open_time(250.5, 300, a) == arrow.get('2017-01-01T07:29:00+00:00')
+	print(acp_times.close_time(250.5, 300, a))
 	assert acp_times.close_time(250.5, 300, a) == arrow.get('2017-01-01T16:44:00+00:00')
 
+	print()
+
+	print(acp_times.open_time(350.5, 400, a))
 	assert acp_times.open_time(350.5, 400, a) == arrow.get('2017-01-01T10:36:00+00:00')
+	print(acp_times.close_time(350.5, 400, a))
 	assert acp_times.close_time(350.5, 400, a) == arrow.get('2017-01-01T23:24:00+00:00')
 
+	print()
+
+	print(acp_times.open_time(450.5, 600, a))
 	assert acp_times.open_time(450.5, 600, a) == arrow.get('2017-01-01T13:50:00+00:00')
+	print(acp_times.close_time(450.5, 600, a))
 	assert acp_times.close_time(450.5, 600, a) == arrow.get('2017-01-02T06:04:00+00:00')
 
+	print()
+
+	print(acp_times.open_time(650.5, 1000, a))
 	assert acp_times.open_time(650.5, 1000, a) == arrow.get('2017-01-02T09:05:00+00:00')
+	print(acp_times.close_time(650.5, 1000, a))
 	assert acp_times.close_time(650.5, 1000, a) == arrow.get('2017-01-04T03:00:00+00:00')
 
 def test_above_and_below_edge_values():
