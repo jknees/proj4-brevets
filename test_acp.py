@@ -18,8 +18,8 @@ def test_edge_values():
 		arrow.get('2017-01-04T03:00:00+00:00')]
 
 	a = arrow.get('2017-01-01T00:00:00+00:00')
-	for i in LIST:
-		assert acp_times.close_time(i, i, a) == answers[i]
+	for i in range(len(LIST)):
+		assert acp_times.close_time(LIST[i], LIST[i], a) == answers[i]
 
 def test_general_times():
 	a = arrow.get('2017-01-01T00:00:00+00:00')
@@ -45,8 +45,8 @@ def test_above_and_below_edge_values():
 
 	a = arrow.get('2017-01-01T00:00:00+00:00')
 
-	for i in LIST:
-		assert acp_times.close_time(i+10 , i, a) == answers[i]
+	for i in range(len(LIST)):
+		assert acp_times.close_time(LIST[i]+10 , LIST[i], a) == answers[i]
 
-	for i in LIST:
-		assert acp_times.close_time(i-10 , i, a) == answers[i]
+	for i in range(len(LIST)):
+		assert acp_times.close_time(LIST[i]-10 , LIST[i], a) == answers[i]
