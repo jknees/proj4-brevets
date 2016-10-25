@@ -7,8 +7,8 @@ import arrow
 LIST = [200, 300, 400, 600, 1000]
 
 def test_zero():
-	a = arrow.utcnow()
-	b = arrow.utcnow().replace(hours=+1)
+	a = arrow.get('2017-01-01T00:00:00+00:00')
+	b = arrow.get('2017-01-01T00:00:00+00:00').replace(hours=+1)
 	assert acp_times.open_time(0, 200, a) == a
 	assert acp_times.close_time(0, 200, a) == b
 
@@ -19,7 +19,7 @@ def test_edge_values():
 
 	a = arrow.get('2017-01-01T00:00:00+00:00')
 	for i in LIST:
-		assert acp_times.close_time(LIST[i], LIST[i], a) == answers[i]
+		assert acp_times.close_time(i, i, a) == answers[i]
 
 def test_general_times():
 	a = arrow.get('2017-01-01T00:00:00+00:00')
@@ -46,7 +46,7 @@ def test_above_and_below_edge_values():
 	a = arrow.get('2017-01-01T00:00:00+00:00')
 
 	for i in LIST:
-		assert acp_times.close_time(LIST[i]+10 , LIST[i], a) == answers[i]
+		assert acp_times.close_time(i+10 , i, a) == answers[i]
 
 	for i in LIST:
-		assert acp_times.close_time(LIST[i]-10 , LIST[i], a) == answers[i]
+		assert acp_times.close_time(i-10 , i, a) == answers[i]
