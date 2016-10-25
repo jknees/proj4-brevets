@@ -129,7 +129,7 @@
     }
     else {
 
-
+      document.getElementById("brevet_dist_km").style.backgroundColor = "white";
       $.getJSON(TIME_CALC_URL, { km: km, open_date: begin_date, open_time: begin_time, dist: brev_dist }, 
         // response handler
         function(data) {
