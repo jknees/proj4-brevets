@@ -15,20 +15,13 @@ The algorithm for calculating controle times is described at https://rusa.org/oc
 We are essentially replacing the calculator at https://rusa.org/octime_acp.html . We can also use that calculator to clarify requirements and develop test data.
 
 ## Running the Server
-'''
-git clone "Repository"
-cd ...
-make configure
-make run
-'''
-* git clone
-* cd 
-* bash ./configure
-* make test
-* make service
+
+*git clone "Repository"
+*cd ...
+*make configure
+*make run
 
 ## To run automated tests 
-'''
-make test
-'''
+*make test
+
 
