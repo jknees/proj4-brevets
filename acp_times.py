@@ -33,6 +33,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        This will be in the same time zone as the brevet start time.
     """
     #print("control_dist_km= " + str(control_dist_km))
+
     control_start_time = 0
     for i in range(len(BREVET_ORDERED_KEYS) - 1):
       key = BREVET_ORDERED_KEYS[i+1]
@@ -81,9 +82,9 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
       diff = key - BREVET_ORDERED_KEYS[i]
       if diff <= control_dist_km:
         control_dist_km -= diff
-        control_start_time += diff/BREVET_TIMES[key][0]
+        control_close_time += diff/BREVET_TIMES[key][0]
       elif control_dist_km > 0:
-        control_start_time += control_dist_km/BREVET_TIMES[key][0]
+        control_close_time += control_dist_km/BREVET_TIMES[key][0]
         control_dist_km = 0
 
     #print("control_close_time= " + str(control_close_time))
