@@ -69,7 +69,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     #print("brevet_dist_km= " + str(brevet_dist_km))
     #print("Before control_dist_km= " + str(control_dist_km))
 
-    if brevet_dist_km*0.8 <= control_dist_km and control_dist_km <= brevet_dist_km*1.2:
+    if control_dist_km <= brevet_dist_km*1.2:
       #print("Passed condition")
       control_close_time = BREVET_TIMES[brevet_dist_km][2]
       minute, hour = math.modf(control_close_time)
