@@ -73,6 +73,9 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
       print("hours = " + str(hour) + " minute= " + str(minute))
       return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(60*minute)))
 
+    elif control_dist_km == 0:
+      return brevet_start_time.replace(hours=+ 1)
+
     for i in range(len(BREVET_ORDERED_KEYS) - 1):
       key = BREVET_ORDERED_KEYS[i+1]
       diff = key - BREVET_ORDERED_KEYS[i]
