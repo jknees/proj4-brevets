@@ -39,9 +39,9 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
       key -= BREVET_ORDERED_KEYS[i]
       if key <= control_dist_km:
         control_dist_km -= key
-        control_start_time += BREVET_ORDERED_KEYS[i]/BREVET_TIMES[BREVET_ORDERED_KEYS[i]][1]
+        control_start_time += BREVET_ORDERED_KEYS[i+1]/BREVET_TIMES[BREVET_ORDERED_KEYS[i+1]][1]
       elif control_dist_km > 0:
-        control_start_time += control_dist_km/BREVET_TIMES[BREVET_ORDERED_KEYS[i]][1]
+        control_start_time += control_dist_km/BREVET_TIMES[BREVET_ORDERED_KEYS[i+1]][1]
         control_dist_km = 0
 
     print("control_start_time= " + str(control_start_time))
@@ -78,9 +78,9 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
       key -= BREVET_ORDERED_KEYS[i]
       if key <= control_dist_km:
         control_dist_km -= key
-        control_start_time += BREVET_ORDERED_KEYS[i]/BREVET_TIMES[BREVET_ORDERED_KEYS[i]][0]
+        control_start_time += BREVET_ORDERED_KEYS[i+1]/BREVET_TIMES[BREVET_ORDERED_KEYS[i+1]][0]
       elif control_dist_km > 0:
-        control_start_time += control_dist_km/BREVET_TIMES[BREVET_ORDERED_KEYS[i]][0]
+        control_start_time += control_dist_km/BREVET_TIMES[BREVET_ORDERED_KEYS[i+1]][0]
         control_dist_km = 0
 
     print("control_close_time= " + str(control_close_time))
