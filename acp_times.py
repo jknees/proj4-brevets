@@ -33,7 +33,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        This will be in the same time zone as the brevet start time.
     """
     #print("control_dist_km= " + str(control_dist_km))
-    control_dist_km = round(control_dist_km, 0)
+    control_dist_km = ceil(control_dist_km - 0.5)
     control_start_time = 0
     for i in range(len(BREVET_ORDERED_KEYS) - 1):
       key = BREVET_ORDERED_KEYS[i+1]
@@ -63,7 +63,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control close time.
        This will be in the same time zone as the brevet start time.
     """
-    control_dist_km = round(control_dist_km, 0)
+    control_dist_km = ceil(control_dist_km - 0.5)
     control_close_time = 0
     #print("brevet_dist_km= " + str(brevet_dist_km))
     #print("Before control_dist_km= " + str(control_dist_km))
