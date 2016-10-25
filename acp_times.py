@@ -34,7 +34,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
     """
     print("control_dist_km= " + str(control_dist_km))
     control_start_time = 0
-    for i in range(len(BREVET_ORDERED_KEYS)):
+    for i in range(len(BREVET_ORDERED_KEYS) - 1):
       key = BREVET_ORDERED_KEYS[i+1]
       diff = key - BREVET_ORDERED_KEYS[i]
       if diff <= control_dist_km:
@@ -73,7 +73,7 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
       print("hours = " + str(hour) + " minute= " + str(minute))
       return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(60*minute)))
 
-    for i in range(len(BREVET_ORDERED_KEYS)):
+    for i in range(len(BREVET_ORDERED_KEYS) - 1):
       key = BREVET_ORDERED_KEYS[i+1]
       diff = key - BREVET_ORDERED_KEYS[i]
       if diff <= control_dist_km:
