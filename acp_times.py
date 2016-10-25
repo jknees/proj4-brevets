@@ -32,7 +32,7 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        An ISO 8601 format date string indicating the control open time.
        This will be in the same time zone as the brevet start time.
     """
-    print("control_dist_km= " + str(control_dist_km))
+    #print("control_dist_km= " + str(control_dist_km))
     control_start_time = 0
     for i in range(len(BREVET_ORDERED_KEYS) - 1):
       key = BREVET_ORDERED_KEYS[i+1]
@@ -44,9 +44,9 @@ def open_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_start_time += control_dist_km/BREVET_TIMES[key][1]
         control_dist_km = 0
 
-    print("control_start_time= " + str(control_start_time))
+    #print("control_start_time= " + str(control_start_time))
     minute, hour = math.modf(control_start_time)
-    print("hour= " + str(hour))
+    #print("hour= " + str(hour))
     return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(round(60*minute, 0))))
 
 def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
@@ -63,14 +63,14 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
        This will be in the same time zone as the brevet start time.
     """
     control_close_time = 0
-    print("brevet_dist_km= " + str(brevet_dist_km))
-    print("Before control_dist_km= " + str(control_dist_km))
+    #print("brevet_dist_km= " + str(brevet_dist_km))
+    #print("Before control_dist_km= " + str(control_dist_km))
 
     if brevet_dist_km*0.8 <= control_dist_km and control_dist_km <= brevet_dist_km*1.2:
-      print("Passed condition")
+      #print("Passed condition")
       control_close_time = BREVET_TIMES[brevet_dist_km][2]
       minute, hour = math.modf(control_close_time)
-      print("hours = " + str(hour) + " minute= " + str(minute))
+      #print("hours = " + str(hour) + " minute= " + str(minute))
       return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(round(60*minute, 0))))
 
     elif control_dist_km == 0:
@@ -86,9 +86,9 @@ def close_time( control_dist_km, brevet_dist_km, brevet_start_time ):
         control_start_time += control_dist_km/BREVET_TIMES[key][0]
         control_dist_km = 0
 
-    print("control_close_time= " + str(control_close_time))
+    #print("control_close_time= " + str(control_close_time))
     minute, hour = math.modf(control_close_time)
-    print("hour= " + str(hour) + " minute= " + str(int(60*minute)))
+    #print("hour= " + str(hour) + " minute= " + str(int(60*minute)))
     return brevet_start_time.replace(hours=+int(hour)).replace(minutes=+(int(round(60*minute, 0))))
 
 
